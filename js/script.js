@@ -4,9 +4,7 @@ $(document).ready(function(){
   makeGrid(gridSize);
 
   // hover effect
-  $(".box").hover(function(){
-    $(this).addClass("selected");
-  });
+  hovCol();
 
   // reset grid color
   $("#reset").click(function(){
@@ -18,21 +16,44 @@ $(document).ready(function(){
     gridSize = Number(prompt("Enter grid size","16"));
     makeGrid(gridSize)
   });
-});
 
-// Functions
-// Set grid size
-function makeGrid(gridSize) {
-  resetCol();
-  for (i=0; i<gridSize; i++) {
-    $("#area").append("<div class='row" + i +"''></div>")
-    for (j=0; j<gridSize; j++) {
-      $(".row" +i).append("<div class='box'></div>");
+  // Delete grid
+  $("#del").click(function () {
+    delGrid();
+  });
+
+  // Functions
+  // Set grid size
+  function makeGrid(gridSize) {
+    delGrid();
+    for (i=0; i<(gridSize*gridSize); i++) {
+      $("#area").append("<div class='box " + i +"'></div>")
+      // Changed the top line from making row divs to just make all the boxes, removing the need for the second for loop.
+      //for (j=0; j<gridSize; j++) {
+        //$("."+i+"").append("<div class='box'></div>");
+      //};
     };
+    hovCol();
   };
-};
 
-// Reset grid color
-function resetCol() {
-  $(".selected").removeClass("selected");
-}
+  // Reset grid color
+  function resetCol() {
+    $(".selected").removeClass("selected");
+  }
+
+  // Hover effect (change color)
+  function hovCol() {
+    $(".box").hover(function(){
+      $(this).addClass("selected");
+    });
+  }
+
+  // Remove the grid
+  function delGrid() {
+    $(".box").remove();
+    $(".row").remove();
+  }
+
+
+
+}); // End document read function
