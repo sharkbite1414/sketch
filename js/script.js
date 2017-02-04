@@ -25,14 +25,26 @@ $(document).ready(function(){
   // Functions
   // Set grid size
   function makeGrid(gridSize) {
+    // Delete previous grid
     delGrid();
+    // Get width of container div and set box width accordingly
+    var areaWidth = $("#area").width();
+    var boxWidth = areaWidth / gridSize;
+    // Get height of container div and set box height
+    var areaHeight = $("#area").height();
+    var boxHeight = areaHeight / gridSize;
+    //debugging
+    console.log("areaWidth",areaWidth,"boxWidth",boxWidth,"areaHeight",areaHeight,"boxHeight",boxHeight )
+
+    // Make box divs
     for (i=0; i<(gridSize*gridSize); i++) {
-      $("#area").append("<div class='box " + i +"'></div>")
-      // Changed the top line from making row divs to just make all the boxes, removing the need for the second for loop.
-      //for (j=0; j<gridSize; j++) {
-        //$("."+i+"").append("<div class='box'></div>");
-      //};
+      $("#area").append("<div class='box " + i +"'></div>");
     };
+
+    // Set box width and height
+    $(".box").width(boxWidth);
+    $(".box").height(boxHeight)
+    // Run hover function
     hovCol();
   };
 
@@ -53,7 +65,5 @@ $(document).ready(function(){
     $(".box").remove();
     $(".row").remove();
   }
-
-
 
 }); // End document read function

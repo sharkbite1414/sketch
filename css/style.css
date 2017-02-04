@@ -6,8 +6,6 @@
 .box {
   min-width: 1px;
   min-height: 1px;
-  width: 2em;
-  height: 2em;
   background-color: red;
   float: left;
 }
