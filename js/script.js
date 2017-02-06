@@ -14,7 +14,7 @@ $(document).ready(function(){
   // Change grid size button
   $("#size").click(function(){
     gridSize = Number(prompt("Enter grid size","16"));
-    makeGrid(gridSize)
+    makeGrid(gridSize);
   });
 
   // Delete grid
@@ -29,24 +29,25 @@ $(document).ready(function(){
     delGrid();
     // Get width of container div and set box width accordingly
     var areaWidth = $("#area").width();
+    var test = 0;
     var boxWidth = areaWidth / gridSize;
     // Get height of container div and set box height
     var areaHeight = $("#area").height();
     var boxHeight = areaHeight / gridSize;
     //debugging
-    console.log("areaWidth",areaWidth,"boxWidth",boxWidth,"areaHeight",areaHeight,"boxHeight",boxHeight )
+    console.log("areaWidth",areaWidth,"boxWidth",boxWidth,"areaHeight",areaHeight,"boxHeight",boxHeight );
 
     // Make box divs
     for (i=0; i<(gridSize*gridSize); i++) {
       $("#area").append("<div class='box " + i +"'></div>");
-    };
-
+    }
+    console.log("Number of box divs",$(".box").length);
     // Set box width and height
     $(".box").width(boxWidth);
-    $(".box").height(boxHeight)
+    $(".box").height(boxHeight);
     // Run hover function
     hovCol();
-  };
+  }
 
   // Reset grid color
   function resetCol() {
