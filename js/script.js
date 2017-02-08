@@ -24,8 +24,7 @@ $(document).ready(function(){
   });
 
   // Random Colors
-  // BUG: random colors don't reset on reset button click due to no class being added for reset function to remove.
-  $("#RandColBut").click(function () {
+    $("#RandColBut").click(function () {
     $(".box").hover(function () {
       $(this).css("background-color", function () {
         return "rgb("+getRandomInt(0,255)+","+getRandomInt(0,255)+","+getRandomInt(0,255)+")";
@@ -65,6 +64,7 @@ $(document).ready(function(){
   // Reset grid color
   function resetCol() {
     $(".selected").removeClass("selected");
+    $(".box").css("background-color","#f8f8f8");
   }
 
   // Hover effect (change color)
