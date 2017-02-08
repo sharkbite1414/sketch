@@ -17,9 +17,10 @@ $(document).ready(function(){
     makeGrid(gridSize);
   });
 
-  // Delete grid
-  $("#del").click(function () {
-    delGrid();
+  // Toggle grid lines
+  $("#gridLines").click(function(){
+    $(".box").toggleClass("boxGridline");
+    $("#area").toggleClass("outerGridline");
   });
 
   // Functions
@@ -64,7 +65,7 @@ $(document).ready(function(){
   // Remove the grid
   function delGrid() {
     $(".box").remove();
-    $(".row").remove();
+    $("#area").removeClass("outerGridline");
   }
 
 }); // End document read function

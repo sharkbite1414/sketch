@@ -3,26 +3,28 @@
   height: 512px;
   float: center;
   margin: auto;
-  /* TODO: make grid togglable */
-  box-shadow: -1px -1px #333, 1px 1px #333;
-
 }
-
+.outerGridline {
+  /* Necessary as .boxGrid will leave 2 outer edges exposed.
+     Border vaules are not used as that would require recalculating each .box div size. */
+  box-shadow: -1px -1px #333;
+}
+.boxGridline {
+  box-shadow: inset -1px -1px #333;
+}
 .box {
   min-width: 1px;
   min-height: 1px;
   background-color: #f8f8f8;
   float: left;
-  /* TODO: make grid togglable */
-  box-shadow: inset -1px -1px #333, inset 1px 1px #333;
 }
 .selected {
   background-color: #a1a1a1;
 }
 .btn-controls {
   float: center;
-  margin-left: 40%;
-  margin-right: 40%;
+  margin-left: 39%;
+  margin-right: 39%;
 }
 button {
   width: auto;
