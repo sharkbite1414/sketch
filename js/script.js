@@ -23,6 +23,16 @@ $(document).ready(function(){
     $("#area").toggleClass("outerGridline");
   });
 
+  // Random Colors
+  // BUG: random colors don't reset on reset button click due to no class being added for reset function to remove.
+  $("#RandColBut").click(function () {
+    $(".box").hover(function () {
+      $(this).css("background-color", function () {
+        return "rgb("+getRandomInt(0,255)+","+getRandomInt(0,255)+","+getRandomInt(0,255)+")";
+      });
+    });
+  });
+
   // Functions
   // Set grid size
   function makeGrid(gridSize) {
@@ -42,6 +52,8 @@ $(document).ready(function(){
     for (i=0; i<(gridSize*gridSize); i++) {
       $("#area").append("<div class='box " + i +"'></div>");
     }
+
+    //debugging
     console.log("Number of box divs",$(".box").length);
     // Set box width and height
     $(".box").width(boxWidth);
@@ -66,6 +78,12 @@ $(document).ready(function(){
   function delGrid() {
     $(".box").remove();
     $("#area").removeClass("outerGridline");
+  }
+
+  function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
   }
 
 }); // End document read function
