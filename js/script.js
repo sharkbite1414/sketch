@@ -21,15 +21,27 @@ $(document).ready(function(){
   $("#gridLines").click(function(){
     $(".box").toggleClass("boxGridline");
     $("#area").toggleClass("outerGridline");
+    $("#gridLines").toggleClass("depressed");
   });
 
   // Random Colors
-    $("#RandColBut").click(function () {
-    $(".box").hover(function () {
-      $(this).css("background-color", function () {
-        return "rgb("+getRandomInt(0,255)+","+getRandomInt(0,255)+","+getRandomInt(0,255)+")";
+  var clickCount = 0;
+  $("#randColBut").click(function () {
+    if (clickCount%2 === 0) {
+      clickCount += 1;
+      $("#randColBut").addClass("depressed");
+      $(".box").hover(function () {
+        $(this).css("background-color", function () {
+          return "rgb("+getRandomInt(0,255)+","+getRandomInt(0,255)+","+getRandomInt(0,255)+")";
+        });
       });
-    });
+    } else {
+      clickCount += 1;
+      $("#randColBut").removeClass("depressed");
+      $(".box").hover(function () {
+        $(this).css("background-color","");
+      });
+    }
   });
 
   // Functions
@@ -39,7 +51,6 @@ $(document).ready(function(){
     delGrid();
     // Get width of container div and set box width accordingly
     var areaWidth = $("#area").width();
-    var test = 0;
     var boxWidth = areaWidth / gridSize;
     // Get height of container div and set box height
     var areaHeight = $("#area").height();
@@ -57,6 +68,11 @@ $(document).ready(function(){
     // Set box width and height
     $(".box").width(boxWidth);
     $(".box").height(boxHeight);
+    // Reset Random Colors button
+    if (clickCount%2 !== 0) {
+    $("#randColBut").removeClass("depressed");
+    clickCount += 1;
+    }
     // Run hover function
     hovCol();
   }

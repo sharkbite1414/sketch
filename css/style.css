@@ -15,7 +15,7 @@
 .box {
   min-width: 1px;
   min-height: 1px;
-  background-color: #f8f8f8;
+  background-color: rgb(248,248,248);
   float: left;
 }
 .selected {
@@ -23,8 +23,15 @@
 }
 .btn-controls {
   float: center;
-  margin-left: 39%;
-  margin-right: 39%;
+  margin-left: 34%;
+  margin-right: 34%;
+}
+.depressed {
+  background-color: #666;
+  border: 1px solid #f5f5f5;
+  border-radius: 2px;
+  box-shadow: inset -2px -2px 2px 1px rgba(0, 0, 0, 0.5), inset 2px 2px 2px 1px rgba(0,0,0,0.5);
+  color: white;
 }
 button {
   width: auto;
