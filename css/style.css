@@ -22,9 +22,8 @@
   background-color: #a1a1a1;
 }
 .btn-controls {
-  float: center;
-  margin-left: 34%;
-  margin-right: 34%;
+  text-align: center;
+
 }
 .depressed {
   background-color: #666;
